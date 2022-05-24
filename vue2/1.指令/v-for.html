@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        --循环数组
+        <ul>
+            <li v-for="(item,index) in music">{{item.name}}---{{index+1}}</li>
+        </ul>
+        --循环对象
+        <hr>
+        <ul>
+            <li v-for="(value,key) in obj">{{key}}--{{value}}</li>
+        </ul>
+    </div>
+</body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            //要循环的数组
+            music:[
+                { name:'青花瓷'},
+                { name:'阳光总在风雨后'},
+                { name:'十年'}
+            ],
+            //要循环的对象
+            obj:{
+                name:'句号',
+                age:18,
+                sex:'男'
+            }
+        }
+    })
+</script>
+</html>

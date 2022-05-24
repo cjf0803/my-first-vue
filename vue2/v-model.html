@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="age">
+        <div>当前输入的年龄是{{age}}</div>
+        <button v-on:click="add">加一岁</button>
+        <button v-on:click="alertAge">弹出年龄</button>
+
+        <hr>
+        <label >课程：</label>
+        <select v-model="course">
+            <option value="java">java</option>
+            <option value="c">c</option>
+            <option value="python">python</option>
+        </select>
+        <br>
+        <input v-model="course" type="radio" value="java" name="java" >java
+        <input v-model="course" type="radio" value="c" name="c" >c
+        <input v-model="course" type="radio" value="python" name="python" >python
+        <div>当前课程是:{{course}}</div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                course:'java',
+                age:10
+            },
+            methods: {
+                add(){
+                    this.age++;
+                },
+                alertAge(){
+                    alert(this.age)
+                }
+                
+            },
+        })
+    </script>
+</body>
+</html>

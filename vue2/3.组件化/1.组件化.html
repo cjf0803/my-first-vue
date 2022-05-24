@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1">
+        <cjf :num="num1"></cjf>
+        <appcjf></appcjf>
+    </div>
+    <hr>
+    <div id="app2">
+<appcjf></appcjf>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //1.全局组件:在所有Vue实例中使用
+            /*
+                1.1命名：不要使用驼峰命名，可以使用中划线的方式命名
+                1.2模板：必须的
+                1.3数据：一定要函数方式声明
+
+            */
+            Vue.component("cjf",{
+                template:`<div @click="num++">{{num}}</div>`,
+                // data() {
+                //     return {
+                //         num:10
+                //     }
+                // },
+                props:["num"]
+            })
+        //2.局部组件
+        const appcjf={
+            template:`<div @click="num++">{{num}}</div>`,
+                data() {
+                    return {
+                        num:10
+                    }
+                },
+        }
+        new Vue({
+            el: '#app1',
+            data: {
+                num1:50
+            },
+            components:{
+                "appcjf":appcjf
+            }
+        })
+    </script>
+</body>
+
+</html>

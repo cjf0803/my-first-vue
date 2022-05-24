@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 实现一个购物车功能
+        1.数据初始化处理
+        2.计算商品总价
+        3.选择商品数量：当商品数量超过库存做提示
+         -->
+        <ul>
+            <li v-for="(item,index) in car">
+                商品名称-- {{item.pname}}
+                <br>
+                商品价格-- {{item.price}}
+                <br>
+                商品库存-- {{item.stock}}
+                <br>
+                数量：<input type="number" v-model="item.num">
+            </li>
+            <li><strong>总价:</strong>{{Sum}}</li>
+            <li v-html="message" style="list-style: none;"></li>
+        </ul>
+
+    </div>
+
+</body>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            car: [{
+                    pname: 'Iphone 12',
+                    price: 7999,
+                    stock: 10,
+                    num: 1
+                },
+                {
+                    pname: '小米11',
+                    price: 4999,
+                    stock: 20,
+                    num: 3
+                }
+            ],
+            message:"",
+            
+        },
+        //methods：当方法中的数据发生调用，方法自动调用
+        methods: {
+            // Sum(){
+            //     let sum=0;
+            //     this.car.forEach(item => {
+            //         sum+=item.price*item.num;
+            //     });
+            //     return sum;
+            // }
+            // warn(){
+            //     let message="";
+            //     this.car.forEach(item=>{
+            //         if(item.num>item.stock){
+            //             message+=`${item.pname}的库存超出限制<br/>`
+            //         }
+            //     })
+            //     return message;
+            // }
+        },
+        //或者计算属性
+        computed: {
+            Sum() {
+                let sum = 0;
+                this.car.forEach(item => {
+                    sum += item.price * item.num;
+                });
+                return sum;
+            }
+        },
+        //侦听器 专门用于侦听数据的变化，当数据发生变化时会自动调用方法
+        watch: {
+            //要倾听的数据
+            car: {
+                handler(newvalue, oldvalue) {
+                    this.message="";
+                    this.car.forEach(item => {
+                        if (item.num > item.stock) {
+                            this.message += `${item.pname}的库存超出限制<br/>`
+                        }
+                    })
+            
+                },
+                deep: true //深度侦听 --数组或对象里面数据改变了
+            }
+        }
+        // 方法和侦听器的区别：
+
+        //     1.方法：方法中任意数据发生了改变就会自动调用方法
+        //     可以调用，有返回值
+
+        //     2.侦听器：需要指定具体的侦听数据，只有被具体的侦听数据发生了改变才会触发
+        //     不能像方法那样去调用，而是靠vue自动触发
+    })
+</script>
+
+</html>

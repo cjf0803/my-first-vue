@@ -1,0 +1,23 @@
+{
+    "user1": "wx9fdb8ble7ce3c68f",
+    "user2": "123456789",
+    "userData1": {   
+        "userdatason1": "97895455",
+        "userdatason2":3,
+        "userData2": [
+            {
+                "usershuzu1":"12",
+                "usershuzu1":"11"
+            },
+             {
+                "usershuzu2":"13",
+                "usershuzu2":"14"
+            },
+            
+            {
+                 "usershuzu3":"15",
+                "usershuzu3":"16"
+            }
+        ]
+  }
+}
