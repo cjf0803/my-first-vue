@@ -1,18 +1,38 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  
+    <VueDemo />
+    <input type="text" name="" id="" v-model="text">
+    <Learn :title="text" @key="receive"/>
+    {{ lala }}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import VueDemo from './components/VueDemo.vue'
+import Learn from './components/Learn.vue'
 export default {
   name: 'App',
+  data() {
+    return {
+      lala:'',
+      text:'',
+      title:{
+        name:'cjf'
+      }
+    }
+  },
+  methods:{
+    receive(data){
+      this.lala=data
+    }
+  },
   components: {
-    HelloWorld
-  }
+    VueDemo,
+    Learn
+}
 }
 </script>
 
