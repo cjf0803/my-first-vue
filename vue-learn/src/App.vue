@@ -6,13 +6,18 @@
     <input type="text" name="" id="" v-model="text">
     <Learn :title="text" @key="receive"/>
     {{ lala }}
+    <A />
+    <B />
   </div>
+  
 </template>
 
 <script>
 
 import VueDemo from './components/VueDemo.vue'
 import Learn from './components/Learn.vue'
+import A from './components/A.vue'
+import B from './components/B.vue'
 export default {
   name: 'App',
   data() {
@@ -31,7 +36,9 @@ export default {
   },
   components: {
     VueDemo,
-    Learn
+    Learn,
+    A,
+    B
 }
 }
 </script>
