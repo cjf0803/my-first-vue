@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name:'B',
+    name:'B_1',
     data() {
         return {
             
