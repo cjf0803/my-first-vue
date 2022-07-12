@@ -2,8 +2,25 @@
   <div id="app">
     <img src="./assets/logo.png">
     <HelloWorld/>
+    <animVue />
     <!-- <parentsVue /> -->
-    <musicVue />
+    <!-- <musicVue /> -->
+    <!-- <slotDemoVue> -->
+    <!-- 具名插槽 -->
+    <!-- <div slot="v1">
+      <div class="v1">
+          {{ msg }}
+       </div >
+     </div> -->
+     <!-- <template slot="v2">
+      <div class="v2">
+          这是插槽2
+       </div >
+     </template> -->
+     <!-- <div slot-scope="data">
+      <h1>{{ data.ct}}</h1>
+     </div>
+    </slotDemoVue>  -->
   </div>
 </template>
 
@@ -11,13 +28,22 @@
 import HelloWorld from './components/HelloWorld'
 import parentsVue from './components/parents.vue'
 import musicVue from './components/music.vue'
+import slotDemoVue from './components/slotDemo.vue'
+import animVue from './components/anim.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      msg:'这是插槽1'
+    }
+  },
   components: {
     HelloWorld,
     parentsVue,
-    musicVue
+    musicVue,
+    slotDemoVue,
+    animVue
     
   }
 }

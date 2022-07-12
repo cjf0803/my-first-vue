@@ -1,5 +1,12 @@
 <template>
   <div class="parents">
+    <slotDemoVue>
+        <template slot-scope="data">
+            <div>
+                {{ data.ct}}
+            </div>
+        </template>
+    </slotDemoVue>
     父组件:{{ msg }}
     <childVue :title="title" :age="age"  @key="receive" nick='' parent="" />
     
@@ -9,6 +16,7 @@
 <script>
 
 import childVue from './child.vue'
+import slotDemoVue from './slotDemo.vue'
 export default {
     name:'parents_vue',
     data() {
@@ -19,7 +27,8 @@ export default {
         }
     },
     components:{
-        childVue
+        childVue,
+        slotDemoVue
     },
     methods:{
         receive(data){
