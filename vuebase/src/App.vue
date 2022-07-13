@@ -2,7 +2,8 @@
   <div id="app">
     <img src="./assets/logo.png">
     <HelloWorld/>
-    <animVue />
+    <filterDemoVue />
+    <!-- <animVue /> -->
     <!-- <parentsVue /> -->
     <!-- <musicVue /> -->
     <!-- <slotDemoVue> -->
@@ -30,6 +31,7 @@ import parentsVue from './components/parents.vue'
 import musicVue from './components/music.vue'
 import slotDemoVue from './components/slotDemo.vue'
 import animVue from './components/anim.vue'
+import filterDemoVue from './components/filterDemo.vue'
 
 export default {
   name: 'App',
@@ -43,7 +45,8 @@ export default {
     parentsVue,
     musicVue,
     slotDemoVue,
-    animVue
+    animVue,
+    filterDemoVue
     
   }
 }

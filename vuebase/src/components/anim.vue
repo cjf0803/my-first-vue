@@ -8,7 +8,8 @@
     > 
     <p class="box" v-if="show">hello</p>  
     </transition>
-    
+    <input type="text" v-focus>
+    <p v-mystyle>哈哈哈</p>
   </div>
 </template>
 
@@ -20,6 +21,19 @@ export default {
             show:true
         }
     },
+    directives:{
+        focus:{
+            inserted:function(el){
+                el.focus();
+            }
+        },
+        mystyle:{
+            inserted:function(el){
+                el.style.fontSize='40px'
+                
+            }
+        }
+    }
 }
 </script>
 

@@ -1,7 +1,7 @@
 {
-  "name": "vue-learn-test1",
+  "name": "vue_http",
   "version": "1.0.0",
-  "description": "'vue基础学习'",
+  "description": "通过vue实现http请求",
   "author": "cjf0803 <532055876@qq.com>",
   "private": true,
   "scripts": {
