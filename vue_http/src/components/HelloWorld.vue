@@ -38,15 +38,28 @@ export default {
     // })
 
     //这是post请求
-    this.$axios.post("http://api.tianapi.com/txapi/ncov/index",{
-      key:'d7c335f2e7856ec48c1962a99fcc6f98'
-    })
-    .then(res=>{
-      console.log(res.data)
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+  //   this.$axios.post("http://api.tianapi.com/txapi/ncov/index",{
+  //     key:'d7c335f2e7856ec48c1962a99fcc6f98'
+  //   })
+  //   .then(res=>{
+  //     console.log(res.data)
+  //   })
+  //   .catch(err=>{
+  //     console.log(err)
+  //   })
+
+  var url=this.HOST+'/api/room/list?page=1'
+  this.$axios({
+    method:'get',
+    url:url,
+    
+  })
+  .then(res=>{
+    console.log(res.data)
+  })
+  .catch(error=>{
+    console.log(error)
+  })
   }
 }
 </script>

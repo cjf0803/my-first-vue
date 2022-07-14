@@ -10,15 +10,7 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/douyu':{
-        target:'https://m.douyu.com',
-        pathRewrite:{
-          '^/douyu':''
-        },
-        changeOrigin:true
-      }
-    },
+    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

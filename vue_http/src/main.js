@@ -7,7 +7,7 @@ import qs from  'qs'
 
 Vue.prototype.$axios=Axios
 Vue.config.productionTip = false
-
+Vue.prototype.HOST="/douyu"
 //拦截器 先把请求 和响应 做处理 得到想要的数据类型或者结构
 //添加请求拦截器
 Axios.interceptors.request.use(function(config){
