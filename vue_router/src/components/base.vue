@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    这是base
+    这是base 路径：{{ getCurrentUrl }}
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
             
         }
     },
+    computed:{
+      getCurrentUrl(){
+        return this.$route.path
+      }
+    }
 }
 </script>
 
