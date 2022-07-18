@@ -21,13 +21,12 @@
     </div>
     <h3>图片轮播</h3>
     <el-carousel :interval="4000" type="card" height="200px">
-    <el-carousel-item v-for="banner in banners" :key="banner">
-      <img :src="banner" />
-    </el-carousel-item>
-  </el-carousel>
+      <el-carousel-item v-for="banner in banners" :key="banner">
+        <img :src="banner" />
+      </el-carousel-item>
+    </el-carousel>
     <router-view />
     <Nav_v />
-  
   </div>
 </template>
 
@@ -40,8 +39,15 @@ export default {
   },
   data() {
     return {
-       banners: ["@/assets/1.jpg", "../../assets/2.jpg", "../../assets/3.jpg"],
-    }
+      banners: [
+        require("@/assets/1.jpg"),
+        require("@/assets/2.jpg"),
+        require("@/assets/3.jpg"),
+        require("@/assets/4.jpg"),
+        require("@/assets/5.jpg"),
+        require("@/assets/6.jpg"),
+      ],
+    };
   },
 };
 </script>
@@ -60,18 +66,18 @@ ul li {
   color: blueviolet;
 }
 .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
-  
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
 </style>

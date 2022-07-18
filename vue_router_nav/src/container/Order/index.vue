@@ -100,6 +100,9 @@ export default {
         // some swiper options...
       },
       swiperOption1:{
+        pagination: {
+          el: ".swiper-pagination",
+        },
         autoplay: true,
       }
     };
@@ -165,6 +168,6 @@ export default {
 }
 img {
   width: 100%;
-  height: 300px;
+  height: 200px;
 }
 </style>
