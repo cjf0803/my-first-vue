@@ -1,15 +1,23 @@
-<template>
-  <div class="">
-    榜单
+<template lang="html">
+  <div>
+    <ListCate_List />
   </div>
 </template>
 
 <script>
+
+import ListCate_List from "../components/ListCate_List"
+
 export default {
-    name:'listcate'
+  data(){
+   return{
+   }
+  },
+  components:{
+    ListCate_List
+  },
 }
 </script>
 
-<style>
-
+<style lang="css">
 </style>

@@ -1,78 +1,56 @@
 <template>
-  <div class="">
+  <div class="home">
+    <VuePullRefresh :on-refresh="onRefresh">
+    <Today_RecommendVue title="今日榜单" :musicType=url1 /> 
+    <SwiperBanner />
+    <News_MusicVue />  
+    <keep-alive>
+      <Music_ListnavVue />
+    </keep-alive>
   
-    <Today_RecommendVue />
+    <router-view />
+    <Today_RecommendVue title="热门歌单" :musicType=url2 /> 
+    </VuePullRefresh>
   </div>
 </template>
 
 <script>
 import Today_RecommendVue from "../components/Today_Recommend.vue";
+import News_MusicVue from "../components/News_Music.vue";
+import SwiperBanner from "../components/Swiper_Banner.vue"
+import Music_ListnavVue from "./musiclist/music_listnav";
+import VuePullRefresh from 'vue-pull-refresh';
+
+
 export default {
-  name: "Today_RecommendVue",
   data() {
     return {
-        
+        url1:1,
+        url2:3
     }
   },
-  components: { 
-    Today_RecommendVue
-    },
-};
+  components: {
+    Today_RecommendVue,
+    News_MusicVue,
+    SwiperBanner,
+    Music_ListnavVue,
+    VuePullRefresh
+    
+},
+ methods:{
+    // 下拉的时候触发函数
+    onRefresh: function() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {         
+              })
+              resolve()
+          })
+        }
+    }
+}
+
 </script>
 
-<style scoped>
-.mod-albums{
-    background-color: #fff;
-    padding: 10px 17px;
+<style >
 
-}
-.hd{
-    display: flex;
-    margin: 14px 0 18px 0 ;
-}
-.hd h2{
-    -webkit-box-flex: 1;
-    -webkit-flex:1 ;
-    flex: 1;
-    margin:0;
-    padding: 0;
-    font-size: 20px;
-}
-
-.hd div{
-    width:64px;
-    font-size: 12px;
-    text-align: right;
-}
-.mod-albums .gallery{
-    overflow: hidden;
-    margin :0  -5px;
-}
-.mod-albums .gallery .card{
-    width:33.3%;
-    float: left;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0 5px 10px;
-
-}
-.mod-albums .gallery .card .album{
-    position: relative;
-
-}
-.mod-albums .gallery .card img{
-    width: 100%;
-    height:  auto;
-    border: 1px solid #eee;
-}
-.mod-albums .gallery .card .name{
-    font-size: 12px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-top: 4px;
-    line-height: 14px;
-    max-height: 28px;
-    margin-bottom: 2px;
-}
 </style>
