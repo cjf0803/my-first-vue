@@ -1,9 +1,13 @@
 <template lang="html">
   <div class="search">
+    <!-- 这是搜索歌曲内容 -->
+    <el-collapse accordion>
+    <el-collapse-item title="-------#搜索歌曲内容-------" >
     <div class="search-title">   
-      <el-input placeholder="请输入关键字搜索歌曲内容~" v-model="searchContent" name="" clearable></el-input>   
-      <el-row><el-button type="primary"  @click="searchHandler" name="button" class="button">搜索</el-button></el-row>
+      <el-input placeholder="请输入关键字搜索歌曲内容~" v-model="searchMusicContent" name="" clearable></el-input>   
+      <el-row><el-button type="primary"  @click="searchMusicHandler" name="button" class="button">搜索歌曲</el-button></el-row>
     </div>
+    
     <ul class="list searchlist">
      <router-link :key="index" tag="li" :to="{name:'musicplay',params:{songid:item.id,songname:item.name,songPicUrl:item.artists[0].img1v1Url,author:item.artists[0].name}}" class="song" v-for="(item,index) in songlist">
        <div class="left">
@@ -16,6 +20,49 @@
        </div>
      </router-link>
    </ul>
+   </el-collapse-item>
+   </el-collapse>
+   <!-- 这是搜索歌手mv -->
+   <el-collapse  accordion>
+    <el-collapse-item title="-------#搜索歌手mv---------" >
+    <div class="search-title">   
+      <el-input placeholder="请输入歌手搜索歌曲Mv~" v-model="searchMv" name="" clearable></el-input>   
+      <el-row><el-button type="success"  @click="searchMvHandler" name="button" class="button">搜索Mv</el-button></el-row>
+    </div>
+    <ul class="list searchlist">
+     <router-link :key="index" tag="li" :to="{name:'mvplay',params:{mvid:item.id,mvname:item.name,mvPicUrl:item.imgurl,author:item.artistName}}" class="song" v-for="(item,index) in mvs">
+       <div class="left">
+         <div class="info  single-line ">
+             <div>
+                 <span>{{ item.name }}</span>
+             </div>
+             <span class="txt">{{ item.artistName }}</span>
+         </div>
+       </div>
+     </router-link>
+   </ul>
+   </el-collapse-item>
+   </el-collapse>
+   <!-- 这是搜索歌手详情 -->
+   <!-- <el-collapse accordion>
+    <el-collapse-item  >
+    <div class="search-title">   
+      <el-input placeholder="请输入歌手搜索歌手详情~" v-model="searchArtistDetails" name="" clearable></el-input>   
+      <el-row><el-button type="info"  @click="searchArtistDetailsHandler" name="button" class="button">搜索详情</el-button></el-row>
+    </div>
+    <ul class="list searchlist">
+      <li class="song" v-for="(item,index) in v_details" :key="index">
+       <div class="left">
+         <div class="info  single-line ">
+             <div>
+                {{item.briefDesc}}
+             </div>          
+         </div>
+       </div>
+       </li>
+   </ul>
+   </el-collapse-item>
+   </el-collapse> -->
   </div>
 </template>
 
@@ -24,14 +71,21 @@ export default {
   name: "search",
   data() {
     return {
-      searchContent: "",
+      searchMusicContent: "",
+      searchMv:'',
+      searchArtistDetails:'',
       songlist: [],
+      Artistid:"",
+      Artistid_detail:"",
+      briefDesc:"",
+      mvs:[],
+      v_details:{}
     };
   },
   methods: {
-    searchHandler() {
+    searchMusicHandler() {
       const searchURL =
-        this.HOST + "/search/suggest?keywords=" + this.searchContent;
+        this.HOST + "/search/suggest?keywords=" + this.searchMusicContent;
       this.$axios
         .get(searchURL)
         .then((res) => {
@@ -41,6 +95,66 @@ export default {
           }
           this.songlist = res.data.result.songs;
           console.log(res.data.result.songs);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+     searchMvHandler() {
+      const searchURL =
+        this.HOST + "/search/suggest?keywords=" + this.searchMv;
+      this.$axios
+        .get(searchURL)
+        .then((res) => {
+          if (res.data.code > 201) {
+            alert("搜索数据不存在");
+            return;
+          }
+          this.Artistid = res.data.result.artists[0].id;
+          
+          const searchMvUrl=this.HOST+"/artist/mv?id="+this.Artistid;
+          this.$axios.get(searchMvUrl).then((res)=>{
+            if (res.data.code > 201) {
+            alert("搜索数据不存在");
+            return;
+          }
+          this.mvs=res.data.mvs
+          console.log(res.data.mvs)
+          
+          })
+          .catch((error1)=>{
+            console.log(error1);
+          })
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+      searchArtistDetailsHandler() {
+      const searchURL =
+        this.HOST + "/search/suggest?keywords=" + this.searchArtistDetails;
+      this.$axios
+        .get(searchURL)
+        .then((res) => {
+          if (res.data.code > 201) {
+            alert("搜索数据不存在");
+            return;
+          }
+          this.Artistid_detail = res.data.result.artists[0].id;
+          console.log(res.data.result.artists[0].id)
+          const searchArtistDetailUrl=this.HOST+"/artist/detail?id="+this.Artistid_detail;
+          this.$axios.get(searchArtistDetailUrl).then((res)=>{
+            if (res.data.code > 201) {
+            alert("搜索数据不存在");
+            return;
+          }
+          this.v_details=res.data.data.artist
+          console.log(res.data.data.artist.briefDesc)
+          
+          })
+          .catch((error1)=>{
+            console.log(error1);
+          })
         })
         .catch((error) => {
           console.log(error);

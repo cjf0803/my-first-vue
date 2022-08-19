@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+    <button @click="show" >显示</button>
+    <button @click="hidden" >隐藏</button>
+    <button @click="toggle">切换</button>
+    <div class="container" v-show="isShow"></div>
+    </div>
+</body>
+    <script>
+        var v=new Vue({
+            el:'#box',
+           data() {
+            return {
+                isShow:false
+            }
+           },
+            methods: {
+                show:function(){
+                    this.isShow=true
+                    
+                    
+                },
+                hidden:function(){
+                    this.isShow=false
+                },
+                toggle:function(){
+                    this.isShow=!this.isShow
+                }
+            },
+        })
+    </script>
+<style>
+    .container{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+    }
+</style>
+</html>

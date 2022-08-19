@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+    <button @click="add" >增加类</button>
+    <button @click="del" >删除类</button>
+    <button @click="toggle">切换</button>
+    <div class="container" v-show="isShow">
+        <div class=content1 v-show="flag" >这是新增类</div>
+    </div>
+    
+    </div>
+</body>
+    <script>
+        var v=new Vue({
+            el:'#box',
+           data() {
+            return {
+                isShow:true,
+                flag:false,
+                
+            }
+           },
+            methods: {
+                add:function(){
+                    this.flag=true
+                },
+                del:function(){
+                    this.flag=false
+                 
+                },
+                toggle:function(){
+                    this.flag=!this.flag
+                }
+              
+            },
+        })
+    </script>
+<style>
+    .container{
+        width: 200px;
+        height: 200px;
+        background-color:chartreuse;
+    }
+    .content1{
+        width: 100%;
+        height: 20%;
+        background-color:blueviolet;
+    }
+    h1 {
+		background-color: orange;
+	}
+	.come {
+		animation: testanimation 1s;
+	}
+	.go {
+	   animation: testanimation 1s reverse;
+	}
+	@keyframes testanimation {
+		from {
+			transform: translateX(-100%);
+		}
+		to {
+			transform: translateX(0px);
+		}
+	}
+
+    
+</style>
+</html>

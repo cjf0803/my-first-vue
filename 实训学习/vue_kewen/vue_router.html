@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        
+            <router-link to="/home">主页</router-link>
+            <router-link to="/news">新闻</router-link>
+            <router-link to="/my">我的</router-link>
+       
+        <!-- 将视图home,news,my 在下面显示 -->
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+       
+    </div>
+    <template id="home">
+        <div>
+            这是主页！
+            {{msg}}
+        </div>
+    </template>
+    <template id="news">
+        <div>
+            这是新闻
+        </div>
+    </template>
+    <template id="my">
+        <div>
+            这是我的
+        </div>
+    </template>
+
+    <script>
+        var home={
+            template:'#home',
+            data() {
+                return {
+                    msg:'lalala'
+                }
+            },
+        }
+        var news={
+            template:'#news',
+            data() {
+                return {
+                    
+                }
+            },
+        }
+        var my={
+            template:'#my',
+            data() {
+                return {
+                    
+                }
+            },
+        }
+        //配置路由
+        var router=new VueRouter({
+            routes: [
+            {
+                path:'/home',
+                name:home,
+                component:home
+                
+            },
+            {
+                path:'/news',
+                name:news,
+                component:news
+            },
+            {
+                path:'/my',
+                redirect:'/home',
+                name:my,
+                component:my
+            }
+        ]
+        })
+        var v = new Vue({
+            el: '#box',
+            data() {
+                return {
+
+                }
+            },
+            router
+            
+        })
+    </script>
+
+</body>
+
+</html>

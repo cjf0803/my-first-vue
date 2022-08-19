@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="box">
+            <p>{{info.name}}</p>
+            <p>{{info.address}}</p>
+            <a :href="info.url">点我一下</a>
+    </div>
+    <script>
+        var v=new Vue({
+            el:'#box',
+            data() {
+                return {
+                    info:{
+                        name:null,
+                        address:{
+                            street:null,
+                            city:null,
+                            country:null
+
+                        },
+                        url:''
+                    }
+                   
+                }
+                
+            } , mounted() {
+                    axios.get('data.json').
+                    then(
+                        response=>{
+                            this.info=response.data
+                        }
+                    )
+                }
+           
+        })
+    </script>
+
+</body>
+</html>

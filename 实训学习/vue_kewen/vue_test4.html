@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for=" (items,index) in json.list" :key="index">
+                <img :src="items.src">
+                <h3>{{items.desc}}</h3>
+                <p>{{items.price}}</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var v = new Vue({
+            el: '#box',
+            data: {
+                json: {
+                    list: [{
+                            src: 'img/2022_08_16/pic01.png',
+                            desc: '[希夏邦马]潮酷手提双肩背包',
+                            price: 169
+                        },
+                        {
+                            src: 'img/2022_08_16/pic02.png',
+                            desc: '[希夏邦马]潮酷列手提双肩背包',
+                            price: 177
+                        },
+                        {
+                            src: 'img/2022_08_16/pic03.png',
+                            desc: '[希夏邦马]潮酷型手提双肩背包',
+                            price: 147
+                        }, {
+                            src: 'img/2022_08_16/pic04.png',
+                            desc: '[希夏邦马]潮酷型人系列手背包',
+                            price: 126
+                        },
+                        {
+                            src: 'img/2022_08_16/pic05.png',
+                            desc: '[希夏邦马]潮酷型人系列手提双肩',
+                            price: 165
+                        },
+                        {
+                            src: 'img/2022_08_16/pic01.png',
+                            desc: '[希夏邦马]潮酷背包',
+                            price: 169
+                        }
+                    ]
+                }
+
+            },
+
+        })
+    </script>
+
+    <style>
+        *{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            background: rgb(224, 221, 242);
+            
+            overflow: hidden;
+           
+        }
+        li{
+            width: 300px;
+            border: 3px solid lightblue;
+            float: left;
+            margin-right: 20px;
+           
+        }
+       
+    </style>
+</body>
+
+</html>

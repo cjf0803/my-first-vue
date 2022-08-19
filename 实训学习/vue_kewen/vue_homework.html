@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <hr />
+        <h2>新歌首发</h2>
+        <p class="title">
+            <span>内地</span>
+            <span>港台</span>
+            <span>欧美</span>
+            <span>日本</span>
+            <span>韩国</span>
+        </p>
+        <ul>
+            <li v-for="(items,index) in json.cjf" :key="index">
+                <img :src="items.src" alt="">
+                <p>{{items.name}}</p>
+                <p>{{items.author}}</p>
+                <p>{{items.time}}</p>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        var v = new Vue({
+            el: '#box',
+            data() {
+                return {
+                    json: {
+                        cjf: [{
+                                src: 'img/2022_08_16/pic01.png',
+                                name: '如初',
+                                author: '李玉刚',
+                                time: '04:36'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic02.png',
+                                name: '南方有乔木',
+                                author: '汪苏泷',
+                                time: '04:31'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic03.png',
+                                name: '还听人劝',
+                                author: '孙子涵',
+                                time: '04:16'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic04.png',
+                                name: '我',
+                                author: '华晨宇',
+                                time: '04:11'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic05.png',
+                                name: '玻璃糖',
+                                author: '冯提莫',
+                                time: '04:36'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic06.png',
+                                name: '微不足道',
+                                author: '张磊',
+                                time: '04:36'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic03.png',
+                                name: '卷珠帘',
+                                author: '霍尊',
+                                time: '04:31'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic02.png',
+                                name: '如初',
+                                author: '李玉刚',
+                                time: '04:36'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic05.png',
+                                name: '颜值说',
+                                author: '少年团',
+                                time: '04:36'
+                            },
+                            {
+                                src: 'img/2022_08_16/pic01.png',
+                                name: '如初',
+                                author: '李玉刚',
+                                time: '04:36'
+                            }
+                        ]
+                    }
+                }
+            },
+
+        })
+    </script>
+
+    <style>
+        * {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+
+
+        }
+
+        .title {
+            margin-left: 30%;
+        }
+
+        span {
+            margin-left: 70px;
+        }
+        ul{
+           overflow: hidden;
+          
+        }
+        li{
+           width: 300px;
+            margin-right: 20px;
+            float: left;
+        }
+        
+        
+    </style>
+</body>
+
+</html>
